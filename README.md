@@ -83,22 +83,17 @@ export HADOOP=/usr/local/Cellar/hadoop/2.7.2/
 ## Start Hadoop
 ```
 dyn-160-39-203-77:sbin siruitan$ ./start-dfs.sh 
-16/09/27 23:30:36 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+16/09/28 00:04:15 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
 Starting namenodes on [localhost]
 localhost: starting namenode, logging to /usr/local/Cellar/hadoop/2.7.2/libexec/logs/hadoop-siruitan-namenode-dyn-160-39-203-77.dyn.columbia.edu.out
 localhost: starting datanode, logging to /usr/local/Cellar/hadoop/2.7.2/libexec/logs/hadoop-siruitan-datanode-dyn-160-39-203-77.dyn.columbia.edu.out
 Starting secondary namenodes [0.0.0.0]
 0.0.0.0: starting secondarynamenode, logging to /usr/local/Cellar/hadoop/2.7.2/libexec/logs/hadoop-siruitan-secondarynamenode-dyn-160-39-203-77.dyn.columbia.edu.out
-16/09/27 23:30:52 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+16/09/28 00:04:30 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
 dyn-160-39-203-77:sbin siruitan$ ./start-yarn.sh 
 starting yarn daemons
 starting resourcemanager, logging to /usr/local/Cellar/hadoop/2.7.2/libexec/logs/yarn-siruitan-resourcemanager-dyn-160-39-203-77.dyn.columbia.edu.out
 localhost: starting nodemanager, logging to /usr/local/Cellar/hadoop/2.7.2/libexec/logs/yarn-siruitan-nodemanager-dyn-160-39-203-77.dyn.columbia.edu.out
-dyn-160-39-203-77:sbin siruitan$ jps
-44739 Jps
-44484 SecondaryNameNode
-44376 DataNode
-44696 NodeManager
-44604 ResourceManager
 ```
 
+`localhost:50070`
