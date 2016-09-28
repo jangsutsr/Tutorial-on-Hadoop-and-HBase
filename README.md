@@ -97,3 +97,26 @@ localhost: starting nodemanager, logging to /usr/local/Cellar/hadoop/2.7.2/libex
 ```
 
 `localhost:50070`
+
+## Install HBase
+```
+dyn-160-39-203-77:~ siruitan$ brew install hbase
+==> Downloading https://www.apache.org/dyn/closer.cgi?path=hbase/1.1.2/hbase-1.1.2-bin.tar.gz
+==> Best Mirror http://apache.mirrors.pair.com/hbase/1.1.2/hbase-1.1.2-bin.tar.gz
+
+curl: (22) The requested URL returned error: 404 Not Found
+Trying a mirror...
+==> Downloading https://archive.apache.org/dist/hbase/1.1.2/hbase-1.1.2-bin.tar.gz
+######################################################################## 100.0%
+==> Caveats
+You must edit the configs in:
+  /usr/local/Cellar/hbase/1.1.2/libexec/conf
+to reflect your environment.
+
+For more details:
+  https://hbase.apache.org/book.html
+==> Summary
+🍺  /usr/local/Cellar/hbase/1.1.2: 11,703 files, 391.0M, built in 23 seconds
+```
+
+`$brew update && brew upgrade`
