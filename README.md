@@ -26,28 +26,6 @@ $JAVA_HOME has been set to be the output of:
 export HADOOP_OPTS="$HADOOP_OPTS -Djava.net.preferIPv4Stack=true -Djava.security.krb5.realm= -Djava.security.krb5.kdc="
 ```
 
-## Stop Everything
-```
-dyn-160-39-203-77:bin siruitan$ ./stop-hbase.sh 
-stopping hbase.....................
-dyn-160-39-203-77:bin siruitan$ cd /usr/local/Cellar/hadoop/2.7.2/sbin/
-dyn-160-39-203-77:sbin siruitan$ ./stop-yarn.sh 
-stopping yarn daemons
-stopping resourcemanager
-localhost: stopping nodemanager
-no proxyserver to stop
-dyn-160-39-203-77:sbin siruitan$ ./stop-dfs.sh 
-16/09/28 00:32:12 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
-Stopping namenodes on [localhost]
-localhost: stopping namenode
-localhost: stopping datanode
-Stopping secondary namenodes [0.0.0.0]
-0.0.0.0: stopping secondarynamenode
-16/09/28 00:32:31 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
-dyn-160-39-203-77:sbin siruitan$ jps
-48681 Jps
-```
-
 `hdfs-site.xml`
 
 ```
@@ -194,4 +172,26 @@ hbase(main):001:0> status
 1 servers, 0 dead, 2.0000 average load
 
 hbase(main):002:0> exit
+```
+
+## Stop Everything
+```
+dyn-160-39-203-77:bin siruitan$ ./stop-hbase.sh 
+stopping hbase.....................
+dyn-160-39-203-77:bin siruitan$ cd /usr/local/Cellar/hadoop/2.7.2/sbin/
+dyn-160-39-203-77:sbin siruitan$ ./stop-yarn.sh 
+stopping yarn daemons
+stopping resourcemanager
+localhost: stopping nodemanager
+no proxyserver to stop
+dyn-160-39-203-77:sbin siruitan$ ./stop-dfs.sh 
+16/09/28 00:32:12 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Stopping namenodes on [localhost]
+localhost: stopping namenode
+localhost: stopping datanode
+Stopping secondary namenodes [0.0.0.0]
+0.0.0.0: stopping secondarynamenode
+16/09/28 00:32:31 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+dyn-160-39-203-77:sbin siruitan$ jps
+48681 Jps
 ```
