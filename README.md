@@ -26,6 +26,28 @@ $JAVA_HOME has been set to be the output of:
 export HADOOP_OPTS="$HADOOP_OPTS -Djava.net.preferIPv4Stack=true -Djava.security.krb5.realm= -Djava.security.krb5.kdc="
 ```
 
+## Stop Everything
+```
+dyn-160-39-203-77:bin siruitan$ ./stop-hbase.sh 
+stopping hbase.....................
+dyn-160-39-203-77:bin siruitan$ cd /usr/local/Cellar/hadoop/2.7.2/sbin/
+dyn-160-39-203-77:sbin siruitan$ ./stop-yarn.sh 
+stopping yarn daemons
+stopping resourcemanager
+localhost: stopping nodemanager
+no proxyserver to stop
+dyn-160-39-203-77:sbin siruitan$ ./stop-dfs.sh 
+16/09/28 00:32:12 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Stopping namenodes on [localhost]
+localhost: stopping namenode
+localhost: stopping datanode
+Stopping secondary namenodes [0.0.0.0]
+0.0.0.0: stopping secondarynamenode
+16/09/28 00:32:31 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+dyn-160-39-203-77:sbin siruitan$ jps
+48681 Jps
+```
+
 `hdfs-site.xml`
 
 ```
@@ -120,3 +142,56 @@ For more details:
 ```
 
 `$brew update && brew upgrade`
+
+## Configure HBase
+`hbase-env.sh`
+
+```
+export JAVA_HOME="$(/usr/libexec/java_home)"
+export HBASE_OPTS="-XX:+UseConcMarkSweepGC -Djava.security.krb5.realm= -Djava.security.krb5.kdc="
+```
+
+`hbase-site.xml`
+
+```
+<configuration>
+    <property>
+        <name>hbase.rootdir</name>
+        <value>hdfs://localhost:9000/hbase</value>
+    </property>
+</configuration>
+```
+## Start HBase
+```
+dyn-160-39-203-77:bin siruitan$ ./start-hbase.sh 
+starting master, logging to /usr/local/Cellar/hbase/1.1.2/libexec/bin/../logs/hbase-siruitan-master-dyn-160-39-203-77.dyn.columbia.edu.out
+Java HotSpot(TM) 64-Bit Server VM warning: ignoring option PermSize=128m; support was removed in 8.0
+Java HotSpot(TM) 64-Bit Server VM warning: ignoring option MaxPermSize=128m; support was removed in 8.0
+dyn-160-39-203-77:bin siruitan$ jps
+47026 DataNode
+47267 ResourceManager
+47141 SecondaryNameNode
+47365 NodeManager
+47813 HMaster
+46934 NameNode
+47866 Jps
+```
+
+## Enter shell
+```
+dyn-160-39-203-77:bin siruitan$ ./hbase shell
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/usr/local/Cellar/hbase/1.1.2/libexec/lib/slf4j-log4j12-1.7.5.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/usr/local/Cellar/hadoop/2.7.2/libexec/share/hadoop/common/lib/slf4j-log4j12-1.7.10.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.slf4j.impl.Log4jLoggerFactory]
+2016-09-28 00:23:13,409 WARN  [main] util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+HBase Shell; enter 'help<RETURN>' for list of supported commands.
+Type "exit<RETURN>" to leave the HBase Shell
+Version 1.1.2, rcc2b70cf03e3378800661ec5cab11eb43fafe0fc, Wed Aug 26 20:11:27 PDT 2015
+
+hbase(main):001:0> status
+1 servers, 0 dead, 2.0000 average load
+
+hbase(main):002:0> exit
+```
